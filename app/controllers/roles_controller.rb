@@ -14,7 +14,6 @@ class RolesController < ApplicationController
     role_params.delete(:features)
     role = Role.new role_params
     role.save
-    
     role.vincula features
     redirect_to roles_path
   end

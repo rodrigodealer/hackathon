@@ -18,7 +18,7 @@
 	<div>
 	<strong><%= f.label :roles %></strong>
 	<% @roles.each do |role| %>
-		<input type="checkbox" name="user[roles][]" value="<%= role.id %>" <%= checked?(@user, role) %>><%= role.name%>
+		<input type="checkbox" name="roles[]" value="<%= role.id %>" <%= checked?(@user, role) %>><%= role.name%>
 	<% end %>
 	</div>
 	<%= f.submit "Cadastrar" %>

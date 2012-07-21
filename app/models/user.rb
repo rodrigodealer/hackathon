@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :users_roles
   
   devise :database_authenticatable, :rememberable, :trackable, :validatable
-  attr_accessible :email, :nome, :password, :admin, :password_confirmation, :remember_me
+  attr_accessible :email, :roles, :nome, :password, :admin, :password_confirmation, :remember_me
   
   def can? controller, action
     admin? || cached_actions.include?([controller, action])
@@ -15,6 +15,15 @@ class User < ActiveRecord::Base
   
   def key_cache
     "#{email}_allowed_actions"
+  end
+  
+  def associa user_params
+    roles = []
+    user_params.map { |role|
+      roles << Role.find(role)
+    }
+    self.roles = roles
+    self
   end
 
 private  

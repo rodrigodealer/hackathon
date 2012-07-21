@@ -56,4 +56,18 @@ describe User do
     end
   end
   
+  describe "Associa role" do
+    before do
+      role = mock_model Role
+      Role.should_receive(:find).with(any_args()).exactly(3).times.and_return role
+    end
+    
+    it "deveria associar role" do
+      roles = [1, 2, 3]
+      user = User.new
+      user = user.associa roles
+      user.should have(3).roles
+    end
+  end
+  
 end

@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   end
   
   def create
-    user = UserRole.associa(params[:user], nil)
+    user = User.new params[:user]
+    user.associa params[:roles]
     if user.save
       flash[:notice] = "Usuario criado com sucesso"
     else
@@ -27,8 +28,8 @@ class UsersController < ApplicationController
   end
   
   def update
-    user = UserRole.associa(params[:user], params[:id])
-    params[:user].delete(:roles)
+    user = User.find params[:id]
+    user.associa params[:roles]
     if user.update_attributes(params[:user])
       flash[:notice] = "Usuario atualizado com sucesso"
     else
