@@ -40,7 +40,7 @@ describe UsersController do
     it "deve postar com sucesso" do
       user_params = FactoryGirl.attributes_for :user
       role = Role.new(:id => 1)
-      user_params[:roles => [ role ]]
+      user_params[:roles] = [ role ]
       post :create, :user => user_params
       response.should be_redirect
     end
