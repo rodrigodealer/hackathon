@@ -67,4 +67,20 @@ describe ApplicationController do
       get :index
     end
   end
+  
+  describe "Menu" do
+     before { 
+       @user = FactoryGirl.create(:user, :admin => true) 
+       sign_in @user
+       feature = FactoryGirl.create(:feature)
+       role = FactoryGirl.create(:role)
+       role.features << feature
+       @user.roles << role
+     }
+     
+     it "deveria retornar features" do
+       controller.retorna_features.should have(1).feature
+     end
+  end
+  
 end

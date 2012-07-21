@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
       current_user.roles.map { |r| 
         r.features.map {|f| @menu << f unless @menu.include?(f)} 
       }.flatten
+      @menu
     end
    end
    
