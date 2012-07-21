@@ -13,13 +13,4 @@ describe RolesController do
     
   end
   
-  describe "POST 'vincula_feature'" do
-    
-    before {login}
-    
-    it "deveria vincular uma feature a uma role" do
-      
-    end
-    
-  end
 end
