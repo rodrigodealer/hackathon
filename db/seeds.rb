@@ -73,3 +73,6 @@ puts "Status criados"
 FactoryGirl.create(:chamado, :titulo => 'Falha na Fatura', :responsavel => katia, :cliente => cliente, :natureza => erro, :status => andamento)
 FactoryGirl.create(:chamado, :titulo => 'Estoque duplicado', :responsavel => joao, :cliente => cliente2, :natureza => duvida, :status => iniciar)
 FactoryGirl.create(:chamado, :titulo => 'Relatório novo', :responsavel => isabel, :cliente => cliente3, :natureza => customizacao, :status => concluido)
+
+FactoryGirl.create(:role, :name => "Assistente Comercial")
+FactoryGirl.create(:role, :name => "Assistente Administrativo")

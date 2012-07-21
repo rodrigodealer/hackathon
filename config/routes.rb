@@ -1,6 +1,8 @@
 Atlas::Application.routes.draw do
   devise_for :users
-
+  
+  resources :users
+  
   resources :chamados do
     member do
       get :adicionar_tramite

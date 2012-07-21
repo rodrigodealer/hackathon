@@ -12,7 +12,11 @@ group :assets do
 end
 
 gem 'headless', '0.3.1'
+<<<<<<< HEAD
 gem 'capybara', '1.1.2'
+=======
+# gem 'capybara', '1.1.2'
+>>>>>>> Criacao e atualizacao de usuario
 # gem 'capybara-webkit', '0.12.1'
 gem 'rspec', '2.10.0'
 gem 'rspec-rails', '2.10.1'
