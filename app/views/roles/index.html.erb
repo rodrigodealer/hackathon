@@ -13,9 +13,10 @@
 				<%= role.name %>
 			</td>
 			<td>
-				<a href="/roles/<%= role.id %>">Visualizar</a>
+				<%= link_to  'Visualizar', role_path(role.id)%>
 			</td>		
     	</tr>
 	<%end%>
 </table>
 
+<%= link_to 'Nova role', new_role_path %>

@@ -27,10 +27,11 @@
 				<%end%>
 			</td>
 			<td>
-				<a href="/users/<%=user.id%>">Show</a>
-				<a href="/users/<%=user.id%>/editS">Edit</a>  
+				<%= link_to  'Visualizar', user_path(user.id)%>
+				<%= link_to  'Editar', edit_path(user.id)%>
 			</td>		
     	</tr>
 	<%end%>
 </table>
 
+<%= link_to 'Novo usuário', new_user_path %>
