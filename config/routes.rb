@@ -33,6 +33,6 @@ Atlas::Application.routes.draw do
   
   match '/roles/:id/vincula_feature' => "roles#vincula_feature", :as => :vincula_feature, :via => :post
 
-  root :to => "chamados#index"
+  root :to => "users#index"
 
 end
