@@ -33,4 +33,34 @@ describe RolesController do
     end
   end
   
+  describe "POST 'create'" do
+    before {
+      login
+      feature = mock_model Feature
+      Feature.should_receive(:find).exactly(3).times.and_return feature
+    }
+    
+    it "deveria postar com sucesso" do
+      role = FactoryGirl.attributes_for :role
+      role[:features] = [1, 2, 3]
+      post :create, :role => role
+      response.should be_redirect
+    end
+  end
+  
+  describe "POST 'vincula_feature'" do
+    before {
+      login
+      feature = mock_model Feature
+      role = mock_model Role
+      role.should_receive(:vincula).once
+      Role.should_receive(:find).once.and_return role
+    }
+    
+    it "deveria postar com sucesso" do
+      post :vincula_feature, :id => 1
+      response.should be_redirect
+    end
+  end
+  
 end

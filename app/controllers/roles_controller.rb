@@ -26,7 +26,6 @@ class RolesController < ApplicationController
     role = Role.find(params[:role_id])
     features = params[:features_list]
     role.vincula features
-    
     flash[:notice] = "Vinculacao feita com sucesso"
     redirect_to roles_path
   end
