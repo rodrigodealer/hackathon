@@ -7,7 +7,7 @@
 	<div>
 	<strong><%= f.label :features %></strong>
 	<% @features.each do |feature| %>
-		<input type="checkbox" name="role[features][]" value="<%= feature.id %>" <%= checked_feature?(@role, feature) %>><%= feature.description %>
+		<input type="checkbox" name="features[]" value="<%= feature.id %>" <%= checked_feature?(@role, feature) %>><%= feature.description %>
 	<% end %>
 	</div>
 	<%= f.submit "Cadastrar" %>

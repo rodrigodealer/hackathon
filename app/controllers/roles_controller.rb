@@ -29,4 +29,20 @@ class RolesController < ApplicationController
     flash[:notice] = "Vinculacao feita com sucesso"
     redirect_to roles_path
   end
+  
+  def edit
+    @role = Role.find params[:id]
+    @features = Feature.all
+  end
+  
+  def update
+    role = Role.find params[:id]
+    role.vincula params[:features]
+    if role.update_attributes(params[:role])
+      flash[:notice] = "Role atualizada com sucesso"
+    else
+      flash[:notice] = "Erro ao atualizar role"
+    end
+    redirect_to roles_path
+  end
 end
