@@ -30,6 +30,18 @@ describe UsersController do
     end
   end
   
+  describe "GET 'show'" do
+    before do
+      user = mock_model User
+      User.should_receive(:find).with(any_args()).once.and_return user
+    end
+    
+    it "deve acessar com sucesso" do
+      get :show, :id => 1
+      response.should be_success
+    end
+  end
+  
   describe "POST 'create'" do
     before do
       user = mock_model User
