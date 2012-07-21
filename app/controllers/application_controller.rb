@@ -20,11 +20,6 @@ class ApplicationController < ActionController::Base
   def retorna_features
     if current_user
       @menu = []
-      # current_user.roles.map {|role|
-       # role.features.map do |feature|
-         # @menu << feature unless @menu.include?(feature)
-       # end
-      # }
       current_user.roles.map { |r| 
         r.features.map {|f| @menu << f unless @menu.include?(f)} 
       }.flatten
