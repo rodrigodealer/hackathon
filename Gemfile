@@ -13,7 +13,7 @@ end
 
 gem 'headless', '0.3.1'
 gem 'capybara', '1.1.2'
-gem 'capybara-webkit', '0.12.1'
+# gem 'capybara-webkit', '0.12.1'
 gem 'rspec', '2.10.0'
 gem 'rspec-rails', '2.10.1'
 gem 'factory_girl', '3.5.0'
