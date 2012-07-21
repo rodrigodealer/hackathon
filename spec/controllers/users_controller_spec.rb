@@ -33,8 +33,11 @@ describe UsersController do
   describe "POST 'create'" do
     before do
       user = mock_model User
-      user.should_receive(:save).with(any_args()).once.and_return true
-      User.should_receive(:new).with(any_args()).once.and_return user
+      role = mock_model Role
+      user.should_receive(:roles=).once
+      Role.should_receive(:find).with(any_args()).once.times.and_return role
+      user.should_receive(:save).with(any_args()).and_return true
+      User.should_receive(:new).with(any_args()).and_return user
     end
     
     it "deve postar com sucesso" do
@@ -49,13 +52,18 @@ describe UsersController do
   describe "POST 'create'" do
     before do
       user = mock_model User
-      user.should_receive(:save).with(any_args()).once.and_return false
-      User.should_receive(:new).with(any_args()).once.and_return user
+      role = mock_model Role
+      user.should_receive(:roles=).once
+      Role.should_receive(:find).with(any_args()).once.times.and_return role
+      user.should_receive(:save).with(any_args()).and_return false
+      User.should_receive(:new).with(any_args()).and_return user
       
     end
     
     it "deve postar com falha" do
       user_params = FactoryGirl.attributes_for :user
+      role = Role.new(:id => 1)
+      user_params[:roles] = [ role ]
       post :create, :user => user_params
       response.should be_redirect
     end
@@ -64,12 +72,17 @@ describe UsersController do
   describe "PUT 'update'" do
     before do
       user = mock_model User
-      User.should_receive(:find).with(any_args()).once.and_return user
-      user.should_receive(:update_attributes).with(any_args()).once.and_return true
+      role = mock_model Role
+      user.should_receive(:roles=).once
+      Role.should_receive(:find).with(any_args()).once.and_return role
+      User.should_receive(:find).with(any_args()).and_return user
+      user.should_receive(:update_attributes).with(any_args()).and_return true
     end
     
     it "deve atualizar com sucesso" do
       user_params = FactoryGirl.attributes_for :user
+      role = Role.new(:id => 1)
+      user_params[:roles] = [ role ]
       put :update, :id => 1, :user => user_params
       response.should be_redirect
     end
@@ -78,12 +91,17 @@ describe UsersController do
   describe "PUT 'update'" do
     before do
       user = mock_model User
-      User.should_receive(:find).with(any_args()).once.and_return user
-      user.should_receive(:update_attributes).with(any_args()).once.and_return false
+      role = mock_model Role
+      user.should_receive(:roles=).once
+      Role.should_receive(:find).with(any_args()).once.and_return role
+      User.should_receive(:find).with(any_args()).and_return user
+      user.should_receive(:update_attributes).with(any_args()).and_return false
     end
     
     it "deve atualizar com falha" do
       user_params = FactoryGirl.attributes_for :user
+      role = Role.new(:id => 1)
+      user_params[:roles] = [ role ]
       put :update, :id => 1, :user => user_params
       response.should be_redirect
     end

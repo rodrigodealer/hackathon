@@ -13,8 +13,4 @@ class RolesController < ApplicationController
     flash[:notice] = "Vinculacao feita com sucesso"
     redirect_to :index
   end
-  
-  def show
-    @role = Role.find(params[:id])
-  end
 end

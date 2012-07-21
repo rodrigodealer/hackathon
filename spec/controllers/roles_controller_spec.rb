@@ -29,11 +29,4 @@ describe RolesController do
     end
     
   end
-
-  describe "GET 'show'" do
-    it "deveria acessar com sucesso show Role" do
-      get :show
-      response.should be_success
-    end
-  end
 end
