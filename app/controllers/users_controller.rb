@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   
   def index
+    @users = User.all
   end
   
   def new
@@ -46,6 +47,10 @@ class UsersController < ApplicationController
       flash[:notice] = "Erro ao atualizar usuario"
     end
     redirect_to users_path
+  end
+  
+  def show
+    @user = User.find(params[:id])
   end
   
 end

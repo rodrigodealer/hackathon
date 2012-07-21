@@ -1,11 +1,25 @@
 <%= form_for(@user, :html => { :class => "well form-horizontal" }) do |f| %>
-	<%= f.text_field :nome %>
-	<%= f.text_field :email %>
-	<%= f.password_field :password %>
+	<div>
+		<strong><%= f.label :name %></strong>
+		<%= f.text_field :nome %>
+	</div>
+	<div>
+		<strong><%= f.label :email %></strong>
+		<%= f.text_field :email %>
+	</div>
+	<div>	
+		<strong><%= f.label :password %></strong>
+		<%= f.password_field :password %>
+	</div>
+	<div>
+	<strong><%= f.label :password_confirmation %></strong>
 	<%= f.password_field :password_confirmation %>
+	</div>
+	<div>
+	<strong><%= f.label :roles %></strong>
 	<% @roles.each do |role| %>
 		<input type="checkbox" name="user[roles][]" value="<%= role.id %>" <%= checked?(@user, role) %>><%= role.name%>
 	<% end %>
-	<%#= select(:user, :roles, @roles.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecione'})%>
+	</div>
 	<%= f.submit "Cadastrar" %>
 <% end %>

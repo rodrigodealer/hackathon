@@ -1,0 +1,36 @@
+<table>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Email
+		</th>
+		<th>
+			Roles
+		</th>
+		<th>
+			Actions
+		</th>
+	</tr>
+	<% @users.each do |user|%>
+		<tr>
+			<td>
+				<%= user.nome %>
+			</td>
+			<td>
+				<%= user.email %>
+			</td>
+			<td>
+				<% user.roles.each do |role|%>
+					<div> <%=role.name%> </div>
+				<%end%>
+			</td>
+			<td>
+				<a href="/users/<%=user.id%>">Show</a>
+				<a href="/users/<%=user.id%>/editS">Edit</a>  
+			</td>		
+    	</tr>
+	<%end%>
+</table>
+
