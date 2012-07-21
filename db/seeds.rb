@@ -20,6 +20,10 @@ alcides = FactoryGirl.create(:user, :nome => "Alcides Queiroz",
 
 assistente_comercial = FactoryGirl.create(:role, :name => "Assistente comercial")
 
+cadastrar_usuario = FactoryGirl.create(:feature, :description => "Cadastrar Usuario")
+
+cadastrar_suprimento = FactoryGirl.create(:feature, :description => "Cadastrar Suprimento")
+
 puts "User criado => #{user.email}"
 
 

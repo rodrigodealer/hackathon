@@ -1,5 +1,5 @@
 class Role < ActiveRecord::Base  
-  attr_accessible :name
+  attr_accessible :name, :features
   
   has_many :users_roles, :class_name => "UsersRoles"
   has_many :users, :through => :users_roles
