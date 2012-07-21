@@ -26,6 +26,8 @@ Atlas::Application.routes.draw do
       end
     end
   end
+  
+  resources :roles
 
   root :to => "chamados#index"
 
