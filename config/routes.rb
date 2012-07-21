@@ -28,6 +28,8 @@ Atlas::Application.routes.draw do
   end
   
   resources :roles
+  
+  match '/roles/:id/vincula_feature' => "roles#vincula_feature", :as => :vincula_feature, :via => :post
 
   root :to => "chamados#index"
 

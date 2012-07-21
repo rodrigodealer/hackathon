@@ -1,0 +1,21 @@
+<table>
+	<tr>
+		<th>
+			Nome
+		</th>
+		<th>
+			Ações
+		</th>
+	</tr>
+	<% @roles.each do |role|%>
+		<tr>
+			<td>
+				<%= role.name %>
+			</td>
+			<td>
+				<a href="/roles/<%= role.id %>">Visualizar</a>
+			</td>		
+    	</tr>
+	<%end%>
+</table>
+

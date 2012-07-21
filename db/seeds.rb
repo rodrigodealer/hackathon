@@ -16,9 +16,12 @@ milfont = FactoryGirl.create(:user, :nome => "Christiano Milfont",
 
 alcides = FactoryGirl.create(:user, :nome => "Alcides Queiroz",
                                  :email => "alcidesqueiroz@grupofortes.com.br", 
-                                 :password => "testes")
+                                 :password => "testes") 
+
+assistente_comercial = FactoryGirl.create(:role, :name => "Assistente comercial")
 
 puts "User criado => #{user.email}"
+
 
 cliente = FactoryGirl.create(:cliente, :nome => "Guanabara")
 cliente2 = FactoryGirl.create(:cliente, :nome => "Bomfim", :implantacao => true)
