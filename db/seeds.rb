@@ -11,7 +11,8 @@ rodrigo = FactoryGirl.create(:user, :nome => "Rodrigo Maia",
                                  :password => "testes")
 
 milfont = FactoryGirl.create(:user, :nome => "Christiano Milfont",
-                                :email => "christianomilfont@grupofortes.com.br", 
+                                :admin => true, 
+                                :email => "cmilfont@grupofortes.com.br", 
                                 :password => "testes")
 
 alcides = FactoryGirl.create(:user, :nome => "Alcides Queiroz",
@@ -20,9 +21,12 @@ alcides = FactoryGirl.create(:user, :nome => "Alcides Queiroz",
 
 assistente_comercial = FactoryGirl.create(:role, :name => "Assistente comercial")
 
+
 cadastrar_usuario = FactoryGirl.create(:feature, :description => "Cadastrar Usuario")
 
 cadastrar_suprimento = FactoryGirl.create(:feature, :description => "Cadastrar Suprimento")
+
+adicionar_tramite = FactoryGirl.create(:feature, :description => "Adicionar Tramite")
 
 puts "User criado => #{user.email}"
 
@@ -80,3 +84,9 @@ FactoryGirl.create(:chamado, :titulo => 'Relatório novo', :responsavel => isabe
 
 FactoryGirl.create(:role, :name => "Assistente Comercial")
 FactoryGirl.create(:role, :name => "Assistente Administrativo")
+
+puts "Role ao usuario"
+milfont.roles << assistente_comercial
+milfont.save
+assistente_comercial.features << adicionar_tramite
+assistente_comercial.save

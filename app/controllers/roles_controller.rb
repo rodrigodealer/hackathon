@@ -1,4 +1,6 @@
 class RolesController < ApplicationController
+  layout "application"
+  
   def index
     @roles = Role.all
   end

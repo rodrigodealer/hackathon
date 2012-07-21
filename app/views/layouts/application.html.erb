@@ -5,14 +5,28 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
+	<style>
+	table{width:100%; text-align:left;}
+	td{height:25px;}
+	th{background:rgba(0,0,0,0.5); height:25px; color:#fff;}
+	
+	#menu{margin-bottom:20px; background:rbga(255, 255, 255, 0.5); width:100%;}
+	</style>
+	
 </head>
 <body>
 <div id="app_body">
   <header>
 	  <h1>Sistema de Atendimento</h1>
-	  <%= link_to "[HOME]", chamados_path %>
+	  <%= link_to "[HOME]", users_path %>
     [Menu] - <%= link_to '[SAIR]', destroy_user_session_path, :method => :delete %>
   </header>
+	<div id="menu">
+		<% @menu.each do |menu| %>
+			<div><a href="javascript:;"><%= menu.description%></a></div>
+		<% end %>
+	</div>
   <%= yield %>  
 </div>
 </body>
