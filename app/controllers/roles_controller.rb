@@ -14,13 +14,19 @@ class RolesController < ApplicationController
     role_params.delete(:features)
     role = Role.new role_params
     role.save
+    
+    role.vincula features
     redirect_to roles_path
+  end
+  
+  def show
+    @role = Role.find params[:id]
   end
   
   def vincula_feature
     role = Role.find(params[:role_id])
     features = params[:features_list]
-    Role.vincula features
+    role.vincula features
     
     flash[:notice] = "Vinculacao feita com sucesso"
     redirect_to roles_path

@@ -1,1 +1,5 @@
-<%= @role.name %>
+<h2><%= @role.name %></h2>
+<h3>Features</h3>
+<% @role.features.each do |feature| %>
+	<div><%= feature.description %></div>
+<% end%>
