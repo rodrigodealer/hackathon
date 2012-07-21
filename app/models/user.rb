@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :users_roles
   
   devise :database_authenticatable, :rememberable, :trackable, :validatable
-  attr_accessible :email, :password, :admin, :password_confirmation, :remember_me
+  attr_accessible :email, :nome, :password, :admin, :password_confirmation, :remember_me
   
   def can? controller, action
     admin? || cached_actions.include?([controller, action])

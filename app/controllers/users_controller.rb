@@ -16,7 +16,14 @@ class UsersController < ApplicationController
   end
   
   def create
+    roles = []
+    params[:user][:roles].map {|role|
+      roles << Role.find(role)
+    }
+    params[:user].delete(:roles)
     user = User.new params[:user]
+    user.roles = roles
+    
     if user.save
       flash[:notice] = "Usuario criado com sucesso"
     else
@@ -26,7 +33,13 @@ class UsersController < ApplicationController
   end
   
   def update
+    roles = []
+    params[:user][:roles].map {|role|
+      roles << Role.find(role)
+    }
     user = User.find params[:id]
+    user.roles = roles
+    params[:user].delete(:roles)
     if user.update_attributes(params[:user])
       flash[:notice] = "Usuario atualizado com sucesso"
     else

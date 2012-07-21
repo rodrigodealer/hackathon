@@ -3,6 +3,9 @@
 	<%= f.text_field :email %>
 	<%= f.password_field :password %>
 	<%= f.password_field :password_confirmation %>
-	<%= select(:user, :roles, @roles.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecione'})%>
+	<% @roles.each do |role| %>
+		<input type="checkbox" name="user[roles][]" value="<%= role.id %>" <%= checked?(@user, role) %>><%= role.name%>
+	<% end %>
+	<%#= select(:user, :roles, @roles.collect {|p| [ p.name, p.id ] }, {:include_blank => 'Selecione'})%>
 	<%= f.submit "Cadastrar" %>
 <% end %>
